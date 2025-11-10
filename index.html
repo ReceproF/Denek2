@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="clock">
+        <div class="hand hour" data-hour-hand></div>
+        <div class="hand minute" data-minute-hand></div>
+        <div class="hand second" data-second-hand></div>
+        <div class="number number1"><div>1</div></div>
+        <div class="number number2"><div>2</div></div>
+        <div class="number number3"><div>3</div></div>
+        <div class="number number4"><div>4</div></div>
+        <div class="number number5"><div>5</div></div>
+        <div class="number number6"><div>6</div></div>
+        <div class="number number7"><div>7</div></div>
+        <div class="number number8"><div>8</div></div>
+        <div class="number number9"><div>9</div></div>
+        <div class="number number10"><div>10</div></div>
+        <div class="number number11"><div>11</div></div>
+        <div class="number number12"><div>12</div></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
