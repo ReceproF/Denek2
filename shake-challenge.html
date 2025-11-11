@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefonu Salla</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            flex-direction: column;
+            text-align: center;
+        }
+        #challenge-container {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        #shake-progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #eee;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        #shake-progress {
+            width: 0%;
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="challenge-container">
+        <h1>Uyanma Vakti!</h1>
+        <p>Alarmı kapatmak için telefonunuzu sallayın.</p>
+        <div id="shake-counter">Kalan Sallama: <strong>10</strong></div>
+        <div id="shake-progress-bar">
+            <div id="shake-progress"></div>
+        </div>
+    </div>
+    <script src="challenge-common.js"></script>
+    <script src="shake-challenge.js"></script>
+</body>
+</html>

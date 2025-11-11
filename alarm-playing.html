@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarm Çalıyor</title>
+</head>
+<body>
+    <h1>Alarm Çalıyor...</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const alarmId = parseInt(urlParams.get('alarmId'));
+            const alarms = JSON.parse(localStorage.getItem('alarms')) || [];
+            const currentAlarm = alarms.find(a => a.id === alarmId);
+
+            if (!currentAlarm) {
+                console.error('Alarm not found!');
+                return;
+            }
+
+            const alarmSound = new Audio('sounds/alarm.mp3');
+            alarmSound.loop = true;
+            let volumeInterval;
+
+            // Listen for the stop command from other pages
+            const channel = new BroadcastChannel('alarm_channel');
+            channel.onmessage = (event) => {
+                if (event.data && event.data.command === 'stop') {
+                    alarmSound.pause();
+                    if (volumeInterval) clearInterval(volumeInterval);
+                    window.close();
+                }
+            };
+
+            if (currentAlarm.crescendo) {
+                alarmSound.volume = 0.1;
+                alarmSound.play().catch(e => console.error("Audio play failed:", e));
+                volumeInterval = setInterval(() => {
+                    if (alarmSound.volume < 1.0) {
+                        alarmSound.volume = Math.min(1.0, alarmSound.volume + 0.1);
+                    } else {
+                        clearInterval(volumeInterval);
+                    }
+                }, 3000);
+            } else {
+                alarmSound.volume = 1.0;
+                alarmSound.play().catch(e => console.error("Audio play failed:", e));
+            }
+        });
+    </script>
+</body>
+</html>

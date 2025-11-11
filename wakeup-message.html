@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Günaydın!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            background-color: #2c3e50;
+            color: white;
+        }
+        #message-container {
+            max-width: 80%;
+        }
+        #quote {
+            font-size: 2rem;
+            font-style: italic;
+        }
+        #author {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-container">
+        <h1 id="greeting"></h1>
+        <p id="quote"></p>
+        <p id="author"></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quotes = [
+                { text: "Her sabah yeni bir başlangıçtır.", author: "Anonim" },
+                { text: "Başlamak için en iyi zaman şimdidir.", author: "Anonim" },
+                { text: "Bugün, dün endişelendiğin yarındır.", author: "Dale Carnegie" },
+                { text: "En büyük zafer, kendine hakim olmaktır.", author: "Eflatun" },
+                { text: "Hayallerinizi gerçekleştirmenin en iyi yolu uyanmaktır.", author: "S. M. Power" }
+            ];
+
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+            document.getElementById('greeting').textContent = "Günaydın!";
+            document.getElementById('quote').textContent = `"${randomQuote.text}"`;
+            document.getElementById('author').textContent = `- ${randomQuote.author}`;
+        });
+    </script>
+</body>
+</html>
