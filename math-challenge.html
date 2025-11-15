@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematik Problemi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            flex-direction: column;
+            text-align: center;
+        }
+        #challenge-container {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        #math-problem {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #math-answer {
+            font-size: 1.5rem;
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="challenge-container">
+        <h1>Uyanma Vakti!</h1>
+        <p>Alarmı kapatmak için aşağıdaki problemi çözün:</p>
+        <div id="math-problem"></div>
+        <input type="number" id="math-answer" placeholder="Cevabınız">
+        <button id="submit-answer-btn">Cevapla</button>
+    </div>
+    <script src="challenge-common.js"></script>
+    <script src="math-challenge.js"></script>
+</body>
+</html>

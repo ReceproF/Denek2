@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <button id="theme-toggle-btn">🌙</button>
+    <div class="clock">
+        <div class="hand hour" data-hour-hand></div>
+        <div class="hand minute" data-minute-hand></div>
+        <div class="hand second" data-second-hand></div>
+        <div class="number number1"><div>1</div></div>
+        <div class="number number2"><div>2</div></div>
+        <div class="number number3"><div>3</div></div>
+        <div class="number number4"><div>4</div></div>
+        <div class="number number5"><div>5</div></div>
+        <div class="number number6"><div>6</div></div>
+        <div class="number number7"><div>7</div></div>
+        <div class="number number8"><div>8</div></div>
+        <div class="number number9"><div>9</div></div>
+        <div class="number number10"><div>10</div></div>
+        <div class="number number11"><div>11</div></div>
+        <div class="number number12"><div>12</div></div>
+    </div>
+
+    <div class="alarms-container">
+        <h2>Alarmlar</h2>
+        <ul id="alarms-list">
+            <!-- Alarmlar buraya eklenecek -->
+        </ul>
+        <button id="add-alarm-btn" class="fab">+</button>
+    </div>
+
+    <div class="sleep-sounds-container">
+        <h2>Uyku Sesleri</h2>
+        <div class="sound-options">
+            <button class="sound-btn" data-sound="rain">Yağmur</button>
+            <button class="sound-btn" data-sound="waves">Dalgalar</button>
+            <button class="sound-btn" data-sound="noise">Beyaz Gürültü</button>
+        </div>
+        <div class="timer-options">
+            <span>Süre:</span>
+            <button class="timer-btn" data-duration="15">15 dk</button>
+            <button class="timer-btn" data-duration="30">30 dk</button>
+            <button class="timer-btn" data-duration="60">60 dk</button>
+        </div>
+        <button id="play-sleep-sound-btn" disabled>Çal</button>
+    </div>
+
+    <div id="alarm-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Alarm Kur</h2>
+            <div class="quick-profiles">
+                <span>Hızlı Ayarla:</span>
+                <button class="profile-btn" data-profile="workday">İş Günü</button>
+                <button class="profile-btn" data-profile="weekend">Hafta Sonu</button>
+            </div>
+            <input type="time" id="alarm-time" value="08:00">
+            <div class="weekdays">
+                <span data-day="1">Pzt</span>
+                <span data-day="2">Sal</span>
+                <span data-day="3">Çar</span>
+                <span data-day="4">Per</span>
+                <span data-day="5">Cum</span>
+                <span data-day="6">Cmt</span>
+                <span data-day="0">Paz</span>
+            </div>
+            <input type="text" id="alarm-label" placeholder="Alarm Etiketi">
+            <select id="dismiss-method">
+                <option value="normal">Normal Kapatma</option>
+                <option value="math">Matematik Problemi</option>
+                <option value="shake">Telefonu Salla</option>
+            </select>
+            <div class="alarm-options">
+                <label><input type="checkbox" id="crescendo-sound"> Artan Ses Seviyesi</label>
+                <label><input type="checkbox" id="smart-snooze"> Akıllı Erteleme</label>
+            </div>
+            <button id="save-alarm-btn">Kaydet</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
